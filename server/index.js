@@ -4,19 +4,19 @@ const path = require('path')
 
 const app = express()
 
-var Rollbar = require('rollbar')
-var rollbar = new Rollbar({
-  accessToken: 'ac5546d947ba4ebab06a8e2b4d254937',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-})
+// var Rollbar = require('rollbar')
+// var rollbar = new Rollbar({
+//   accessToken: 'ac5546d947ba4ebab06a8e2b4d254937',
+//   captureUncaught: true,
+//   captureUnhandledRejections: true,
+// })
 
-rollbar.log('Hello world!')
+// rollbar.log('Hello world!')
 
-server.get('/get', (req, res) => {
-  res.send('Welcome to API')
-  rollbar.info('User interacted')
-})
+// server.get('/get', (req, res) => {
+//   res.send('Welcome to API')
+//   rollbar.info('User interacted')
+// })
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'))
