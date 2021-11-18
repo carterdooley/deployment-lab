@@ -11,9 +11,11 @@ var rollbar = new Rollbar({
   captureUnhandledRejections: true,
 })
 
-.get('/get', (req, res) => {
-  res.send('Welcome to API')
-  rollbar.info('User interacted')
+app.get('/get', (req, res) => {try {
+  nonExistentFunction();
+} catch (error) {
+  console.error(error);
+}
 })
 
 app.get('/', (req, res) => {
