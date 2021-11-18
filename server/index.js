@@ -1,20 +1,25 @@
 const express = require('express')
-
+const server = express();
 const path = require('path')
 
 const app = express()
 
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
-  accessToken: '881dcde6339947578e6d3c60b181042b',
+  accessToken: 'ac5546d947ba4ebab06a8e2b4d254937',
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
 
+rollbar.log('Hello world!')
+
+server.get('/get', (req, res) => {
+  res.send('Welcome to API')
+  rollbar.info('User interacted')
+})
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'))
-    rollbar.log('Hello World')
 })
 
 
@@ -24,6 +29,7 @@ app.get('/style.css', (req, res) => {
 
 const port = process.env.PORT || 4005
 
-app.listen(port, () => {
-    console.log(`App running on ${port}`)
+const PORT = process.env.Port || 7000
+server.listen(PORT, () => {
+    console.log(`server running on port ${PORT}`)
 })
