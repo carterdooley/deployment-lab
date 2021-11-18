@@ -4,13 +4,19 @@ const path = require('path')
 
 const app = express()
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'))
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: '881dcde6339947578e6d3c60b181042b',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
 })
 
-app.get('/js', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/main.js'))
-  })
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'))
+    rollbar.log('Hello World')
+})
+
 
 app.get('/style.css', (req, res) => {
     res.sendFile(path.join(__dirname, '../style.css'))
