@@ -13,7 +13,7 @@ var rollbar = new Rollbar({
 
 rollbar.log('Working')
 
-app.get('/post', (req, res) => { try {
+app.post('/post', (req, res) => { try {
   nonExistantFunction()
   } catch (error) {
     rollbar.warning('Info Not Recieved')
