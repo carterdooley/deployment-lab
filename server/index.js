@@ -13,12 +13,12 @@ var rollbar = new Rollbar({
 
 rollbar.log('Working')
 
-// app.get('/get', (req, res) => {try {
-//   nonExistentFunction();
-// } catch (error) {
-//   rollbar.error(error);
-// }
-// })
+app.get('/get', (req, res) => {try {
+  nonExistentFunction();
+} catch (error) {
+  rollbar.error(error);
+}
+})
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'))
