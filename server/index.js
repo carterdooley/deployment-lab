@@ -13,13 +13,16 @@ var rollbar = new Rollbar({
 
 rollbar.log('Working')
 
-app.get('/get', (req, res) => {try {
-  nonExistentFunction();
-} catch (error) {
-  rollbar.critical('Must Recieve Request');
-  rollbar.warning('No content to display')
-}
+app.get('/post', (req, res) => { try {
+  nonExistantFunction()
+  } catch (error) {
+    rollbar.warning('Info Not Recieved')
+  }
 })
+  
+
+  
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'))
