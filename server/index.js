@@ -1,5 +1,5 @@
 const express = require('express')
-const server = express();
+
 const path = require('path')
 
 const app = express()
@@ -16,7 +16,8 @@ rollbar.log('Working')
 app.get('/get', (req, res) => {try {
   nonExistentFunction();
 } catch (error) {
-  rollbar.error(error);
+  rollbar.critical('Must Recieve Request');
+  rollbar.warning('No content to display')
 }
 })
 
