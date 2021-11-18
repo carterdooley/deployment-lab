@@ -20,7 +20,12 @@ app.post('/post', (req, res) => { try {
   }
 })
   
-
+app.put('/put', (req, res) => { try {
+  nonExistantFunction()
+  } catch (error) {
+    rollbar.critical('Does Not Exist')
+  }
+})
   
 
 
